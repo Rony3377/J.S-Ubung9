@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+  </head>
+  <body>
+    <div id="wunderbar"></div>
+    <script>
+      const x = document.getElementById("wunderbar");
+      let nummer = 0;
+      let waw = 20;
+
+      const farbe = [
+        "skyblue",
+        "navy",
+        "black",
+        "green",
+        "crimson",
+        "pink",
+        "orange",
+        "silver",
+        "darkgray",
+        "blue"
+      ];
+
+      let farbNummer1 = 0,
+        farbNummer2 = farbe.length - 1;
+
+      function dieUhrTickt() {
+        nummer++;
+
+        let farbwert1 = farbe[farbNummer1];
+        let farbwert2 = farbe[farbNummer2];
+
+        farbNummer1++;
+
+        if (farbNummer1 > farbe.length - 1) farbNummer1 = 0;
+
+        farbNummer2--;
+
+        if (farbNummer2 < 0) farbNummer2 = farbe.length - 1;
+
+        x.innerHTML = `<h1 style = "font-size:${
+          100 + nummer * 10
+        }%;color:${farbwert1};background-color:${farbwert2}">${nummer}</h1>`;
+
+        waw += 10;
+
+        if (waw > 150) waw = 50;
+
+        setTimeout("dieUhrTickt()", waw);
+      }
+      // *** //
+      dieUhrTickt();
+    </script>
+  </body>
+</html>
